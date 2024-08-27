@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body
+    class="w-full h-full bg-zinc-900 p-10 min-10 flex justify-center items-center"
+  >
+    <div
+      class="flex min-w-[100%] shadow-2xl rounded-md p-5 m-10 flex-col flex-wrap bg-zinc-800"
+    >
+      <div class="w-auto bg-zinc-700 p-2 rounded-md">
+        <h1 class="text-white font-semibold text-2xl m-2">
+          <%= val.replace(".txt","") %>
+        </h1>
+      </div>
+      <div class="w-auto bg-zinc-700 p-2 mt-2 rounded-md">
+        <p class="text-white text-xl m-2"><%= data %></p>
+      </div>
+    </div>
+  </body>
+</html>

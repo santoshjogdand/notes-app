@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="m-h-screen bg-zinc-900">
+    <div class="w-full m-h-screen bg-zinc-900">
+      <form class="p-10" action="/create" method="post">
+        <h1 class="text-white font-semibold text-4xl mb-3">My notes</h1>
+        <input
+          type="text"
+          class="p-3 px-5 px-2 bg-zinc-800 outline-none text-white h-12 rounded-md w-full"
+          placeholder="Your title goes here"
+          name = "title"
+          required
+        />
+        <textarea
+          class="p-3 px-5 px-2 bg-zinc-800 mt-2 h-48 resize-none rounded-md outline-none text-white block w-full h-"
+          placeholder="All details will be here"
+          name = "details"
+          required
+        ></textarea>
+        <input
+          class="mt-2 h-8 px-2 bg-blue-600 rounded-md text-white"
+          type="submit"
+          value="Create Note"
+        />
+      </form>
+      <div class="notes p-10 flex gap-3 flex-wrap">
+        <% if(files.length > 0){ files.forEach((val)=>{ %>
+            <div class="note min-72 w-auto rounded-md bg-zinc-800 text-white mt-2 p-4">
+                <h1 class="font-semibold text-3xl"><%= val.replace(".txt","") %></h1>
+                <div class="inline-block flex gap-3 relative">
+                    <p class="text-blue-600" name="<%= val %>"><a href="/note/<%= val %>">Read more...</a></p>
+                    <p class="text-blue-600 absolute -top-[60px] -right-[25px]" name="<%= val %>"><a href="/delete/<%= val %>">
+                        <svg class="text-white" width="20px" height="20px" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M8 16C12.4183 16 16 12.4183 16 8C16 3.58172 12.4183 0 8 0C3.58172 0 0 3.58172 0 8C0 12.4183 3.58172 16 8 16ZM4.29289 5.70711L6.58579 8L4.29289 10.2929L5.70711 11.7071L8 9.41421L10.2929 11.7071L11.7071 10.2929L9.41421 8L11.7071 5.70711L10.2929 4.29289L8 6.58579L5.70711 4.29289L4.29289 5.70711Z" fill="white"/>
+                            </svg>
+                    </a></p>
+                </div>
+            </div>
+        <% })}else{ %>
+            <div class="text-blue-600 inline-block">
+            <p>Not notes yet</p>
+            </div>
+        <% } %>
+        
+      </div>
+      <% if (message) { %>
+        <script>
+            alert("<%= message %>");
+        </script>
+    <% } %>
+    </div>
+  </body>
+</html>
